@@ -1,0 +1,7 @@
+category: Gnome
+requires: python python-cairo python-dbus python-gobject2.0 python-gtk2.0 python-setuptools
+sdesc: "DBus notification system for GNOME"
+ldesc: "Mumbles is a plugin-driven, DBus based notification system 
+written for the Gnome desktop. Similar to libnotify notifications and 
+Growl for OSX, Mumbles aims to provide a modern notification system for 
+the GNU/Linux Desktop."

@@ -1,0 +1,6 @@
+inherit distutils
+
+DESCRIPTION="Plugin-based notification system for GNOME"
+HOMEPAGE="http://www.mumbles-project.org/"
+SRC_URI="mirror://sourceforge/mumbles/${PN}_${PV}-1.tar.gz"
+PATCH_URI="0.4-distutils-install.patch"

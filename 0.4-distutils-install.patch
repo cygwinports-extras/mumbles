@@ -1,0 +1,44 @@
+--- origsrc/mumbles-0.4/bin/mumbles	2007-08-26 17:30:20.000000000 -0500
++++ src/mumbles-0.4/bin/mumbles	2009-10-08 00:27:50.161568600 -0500
+@@ -8,6 +8,9 @@
+ #------------------------------------------------------------------------
+ import os, sys
+ 
++from distutils.sysconfig import *
++sys.path.append(get_python_lib(0,0) + "/mumbles/")
++
+ sys.path.append("/usr/share/python-support/mumbles/src/")
+ os.environ.setdefault("MUMBLES_PATH", "/usr/share/mumbles/")
+ 
+--- origsrc/mumbles-0.4/bin/mumbles-send	2007-08-28 22:17:51.000000000 -0500
++++ src/mumbles-0.4/bin/mumbles-send	2009-10-08 00:27:54.638776400 -0500
+@@ -22,6 +22,9 @@ from dbus.mainloop.glib import DBusGMain
+ from socket import AF_INET, SOCK_DGRAM, socket
+ from getpass import getpass
+ 
++from distutils.sysconfig import *
++sys.path.append(get_python_lib(0,0) + "/mumbles/")
++
+ sys.path.append("/usr/share/python-support/mumbles/src/")
+ os.environ.setdefault("MUMBLES_PATH", "/usr/share/mumbles/")
+ 
+--- origsrc/mumbles-0.4/setup.py	2007-08-29 20:42:56.000000000 -0500
++++ src/mumbles-0.4/setup.py	2009-10-08 00:23:29.109713400 -0500
+@@ -17,14 +17,15 @@ dist = setup(name='mumbles',
+ 	license='GNU GPL',
+ 	platforms='linux',
+ 	scripts=['bin/mumbles', 'bin/mumbles-send'],
+-	packages=['src'],
++	packages=['mumbles'],
++	package_dir={'mumbles': 'src'},
+ 	data_files=[
+ 		('share/icons/hicolor/22x22/apps', ['src/ui/mumbles.png']),
+ 		('share/icons/hicolor/scalable/apps', ['src/ui/mumbles.svg']),
+ 		('share/pixmaps', ['src/ui/mumbles.png']),
+ 		('share/applications', ['bin/mumbles.desktop']),
+ 		('share/mumbles/ui', glob.glob("src/ui/*.glade")),
+-		('share/mumbles/ui', ["src/ui/mumbles.png"]),
++		('share/mumbles/ui', glob.glob("src/ui/*.png")),
+ 		('share/mumbles/plugins', glob.glob("src/plugins/*.egg")),
+ 		('share/mumbles/plugins/icons', glob.glob("src/plugins/icons/*.png")),
+ 		('share/mumbles/themes/default', glob.glob("src/themes/default/*.xml")),
